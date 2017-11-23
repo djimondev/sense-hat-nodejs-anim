@@ -1,91 +1,102 @@
 'use strict';
+class Snake {
+    constructor() {
+        this.points = [];
+        this.size = this.randInt(3,8);
+        this.randomizePosition()
+    }
 
-class DisplayManager {
-	constructor() {
+    randomizePosition() {
+        this.x = this.randInt(1,5);
+        this.y = this.randInt(1,5);
+        this._x = this.randInt(-1,2);
+        this._y = this.randInt(-1,2);
 
-        this.sense = require("sense-hat-led").sync;
-		this.sense.clear();
-        this.randomizeValues();
+        if (this.x == this.y || (this._x == 0 && this._y == 0)|| (this._x != 0 && this._y != 0)) {
+            this.randomizePosition();
+        } else {
+            this.randomizeValues();
+            this.points.push([this.x, this.y]);
+        }
+
     }
 
     randomizeValues() {
-		this.x = Math.floor(Math.random() * 5) + 1  ;
-		this.y = Math.floor(Math.random() * 5) + 1  ;
-		this._x = Math.floor(Math.random() * 50)%2?1:-1;
-		this._y = Math.floor(Math.random() * 50)%2?1:-1;
-
-
-		this.r = Math.floor(Math.random() * 254) + 1;
-		this.g = Math.floor(Math.random() * 254) + 1;
-		this.b = Math.floor(Math.random() * 254) + 1;
-		this._r = Math.floor(Math.random() * 50)%2?10:-10;
-		this._g = Math.floor(Math.random() * 50)%2?10:-10;
-		this._b = Math.floor(Math.random() * 50)%2?10:-10;
-
-		if (this.x == this.y || this._x == this._y) {
-			this.randomizeValues();
-		} else {
-	        this.animate();
-		}
-    }
-
-    animate() {
-		this.sense.setPixel(this.x,this.y,[this.r,this.g,this.b])
-		this.sense.sleep(.2);
-		this.sense.clear(this.x,this.y);
-		this.calculate();
-		this.animate();
-
+        this.r = this.randInt(1,254);
+        this.g = this.randInt(1,254);
+        this.b = this.randInt(1,254);
+        this._r = this.randInt(0,50)%2?10:-10;
+        this._g = this.randInt(0,50)%2?10:-10;
+        this._b = this.randInt(0,50)%2?10:-10;
     }
 
     calculate() {
-    	if(this.x>6) {
-    		this._x = -1
-    	}
-    	if(this.x<1) {
-    		this._x = 1
-    	}
-    	if(this.y>6) {
-    		this._y = -1
-    	}
-    	if(this.y<1) {
-    		this._y = 1
-    	}
+        if(this.x + this._x > 7) {
+            this.x = -1;
+        } else if(this.x + this._x < 0) {
+            this.x = 8;
+        } 
 
-		this.r += this._r;
-		this.g += this._g;
-		this.b += this._b;
+        if(this.y + this._y > 7) {
+            this.y = -1;
+        } else if(this.y + this._y < 0) {
+            this.y = 8;
+        }
 
-    	if(this.r>244) {
-    		this.r -= 10;
-    		this._r = -10;
-    	}
-    	if(this.r<11) {
-    		this.r += 10;
-    		this._r = 10;
-    	}
-    	if(this.g>244) {
-    		this.g -= 10;
-    		this._g = -10;
-    	}
-    	if(this.g<11) {
-    		this.g += 10;
-    		this._g = 10;
-    	}
-    	if(this.b>244) {
-    		this.b -= 10;
-    		this._b = -10;
-    	}
-    	if(this.b<11) {
-    		this.b += 10;
-    		this._b = 10;
-    	}
 
-    	
-    	this.x += this._x;
-    	this.y += this._y;
+        this.x += this._x;
+        this.y += this._y;
+
+
+        this.r += this._r;
+        this.g += this._g;
+        this.b += this._b;
+
+        if(this.r>244) {
+            this.r -= 10;
+            this._r = -10;
+        }
+        if(this.r<11) {
+            this.r += 10;
+            this._r = 10;
+        }
+        if(this.g>244) {
+            this.g -= 10;
+            this._g = -10;
+        }
+        if(this.g<11) {
+            this.g += 10;
+            this._g = 10;
+        }
+        if(this.b>244) {
+            this.b -= 10;
+            this._b = -10;
+        }
+        if(this.b<11) {
+            this.b += 10;
+            this._b = 10;
+        }
+
+        if (this.randInt(0,4) == 3) {
+            if (this._x !=0) {
+                this._x = 0;
+                this._y= this.randInt(0,50)%2?1:-1;
+            } else {
+                this._y = 0;
+                this._x= this.randInt(0,50)%2?1:-1;
+            }
+        }
+
+        this.points.push([this.x, this.y]);
+        if (this.points.length > this.size) {
+            this.points.shift();
+        }
+    }
+
+    randInt(_in, _out) {
+        return Math.floor(Math.random() * _out) + _in;
     }
 
 };
 
-module.exports = DisplayManager;
+module.exports = Snake;
