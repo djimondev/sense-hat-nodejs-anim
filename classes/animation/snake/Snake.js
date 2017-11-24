@@ -17,8 +17,8 @@ class Snake {
             this.randomizePosition();
         } else {
             this.randomizeColor();
-            let p = new Point([this.x, this.y, this.r, this.g, this.b])
-            this.points.push([this.x, this.y]);
+            let p = new SnakePoint(this.x, this.y, this.r, this.g, this.b)
+            this.points.push(p);
         }
 
     }
@@ -89,7 +89,8 @@ class Snake {
             }
         }
 
-        this.points.push([this.x, this.y]);
+        let p = new SnakePoint(this.x, this.y, this.r, this.g, this.b)
+        this.points.push(p);
         if (this.points.length > this.size) {
             this.points.shift();
         }

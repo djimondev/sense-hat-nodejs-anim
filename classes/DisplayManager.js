@@ -12,7 +12,7 @@ class DisplayManager {
     }
 
     startSnakeAnimation() {
-        let anim = new SnakeAnimation(this.sense,this.randInt(1,4));
+        let anim = new SnakeAnimation(this.sense,1);
         anim.start()
     }
 
