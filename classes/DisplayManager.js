@@ -3,12 +3,18 @@
 const BallAnimation = require('./animation/balls/BallAnimation.js');
 const SnakeAnimation = require('./animation/snake/SnakeAnimation.js');
 const SquareAnimation = require('./animation/squares/SquareAnimation.js');
+const SnowAnimation = require('./animation/snow/SnowAnimation.js');
 
 class DisplayManager {
 	constructor(lowlight = false) {
         this.sense = require("sense-hat-led").sync;
 		this.sense.clear();
 		this.sense.lowLight = lowlight;
+    }
+
+    startSnowAnimation() {
+        let anim = new SnowAnimation(this.sense,25);
+        anim.start()
     }
 
     startSnakeAnimation() {
