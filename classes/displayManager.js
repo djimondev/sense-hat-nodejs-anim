@@ -2,13 +2,13 @@
 
 const BallAnimation = require('./animation/balls/BallAnimation.js');
 const SnakeAnimation = require('./animation/snake/SnakeAnimation.js');
+const SquareAnimation = require('./animation/squares/SquareAnimation.js');
 
 class DisplayManager {
-	constructor() {
+	constructor(lowlight = true) {
         this.sense = require("sense-hat-led").sync;
 		this.sense.clear();
-		this.sense.lowLight = true;
-		this.startSnakeAnimation();
+		this.sense.lowLight = lowlight;
     }
 
     startSnakeAnimation() {
@@ -17,8 +17,13 @@ class DisplayManager {
     }
 
     startBallAnimation() {
-        let anim2 = new BallAnimation(this.sense,this.randInt(1,8));
-        anim2.start()
+        let anim = new BallAnimation(this.sense,this.randInt(1,8));
+        anim.start()
+    }
+
+    startSquareAnimation() {
+        let anim = new BallAnimation(this.sense);
+        anim.start()
     }
 
     randInt(_in, _out) {
