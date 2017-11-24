@@ -50,7 +50,7 @@ class PixelAnimation {
                     }
                 }
                 // if full => reset
-                anim.sense.sleep(this.sleep);
+                anim.sense.sleep(2);
                 anim.init();
                 anim.start();
             }
