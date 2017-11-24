@@ -30,13 +30,13 @@ class SnakeAnimation {
     eraseSnake(snake) {
         var sense = this.sense;
         var point = snake.points[0];
-        sense.setPixel(point[0],point[1], [0,0,0]);
+        sense.setPixel(point.x,point.y, [0,0,0]);
     }
 
     drawSnake(snake) {
         var sense = this.sense;
         snake.points.forEach(function(point) {
-            sense.setPixel(point[0],point[1],[snake.r,snake.g,snake.b]);
+            sense.setPixel(point.x,point.y,[point.r,point.g,point.b]);
         });
     }
 

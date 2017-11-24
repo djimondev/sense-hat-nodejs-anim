@@ -12,7 +12,7 @@ class DisplayManager {
     }
 
     startSnakeAnimation() {
-        let anim = new SnakeAnimation(this.sense,this.randInt(1,4));
+        let anim = new SnakeAnimation(this.sense,1);
         anim.start()
     }
 
@@ -26,8 +26,8 @@ class DisplayManager {
         anim.start()
     }
 
-    randInt(_in, _out) {
-        return Math.floor(Math.random() * _out) + _in;
+    randInt(high, low) {
+        return Math.random() * (high - low) + low;
     }
 };
 
