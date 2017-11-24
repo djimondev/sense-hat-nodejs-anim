@@ -34,7 +34,7 @@ class DisplayManager {
     }
 
     startPixelAnimation() {
-        let anim = new PixelAnimation(this.sense, 0);
+        let anim = new PixelAnimation(this.sense, 0.1);
         anim.start()
     }
 

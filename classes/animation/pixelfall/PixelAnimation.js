@@ -22,15 +22,14 @@ class PixelAnimation {
     }
 
     start() {
-        this.currentpixel = this.randInt(-8, -1);
-        console.log(this.currentpixel);
+        this.currentpixel = this.randInt(0, 7);
+        this.currentpixel -= 8; //to begin à the first line
         this.animate();
 
     }
 
     animate() {
         var anim = this;
-        anim.sense.sleep(this.sleep);
         if (anim.currentPixel + 8 > 55) {
             anim.start();
             return;
@@ -40,7 +39,7 @@ class PixelAnimation {
                 anim.currentpixel += 8;
                 anim.pixels[anim.currentpixel] = [anim.randInt(0,255),anim.randInt(0,255),anim.randInt(0,255)];
                 anim.sense.setPixels(anim.pixels);
-                console.log(anim.pixels);
+                anim.sense.sleep(this.sleep);
                 anim.animate(); 
                 return;
             } else {
@@ -51,6 +50,7 @@ class PixelAnimation {
                     }
                 }
                 // if full => reset
+                anim.sense.sleep(this.sleep);
                 anim.init();
                 anim.start();
             }
