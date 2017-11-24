@@ -7,8 +7,8 @@ class Ball {
     randomizePosition() {
         this.x = this.randInt(0,8);
         this.y = this.randInt(0,8);
-        this._x = this.randInt(0,50)?1:-1;
-        this._y = this.randInt(0,50)?1:-1;
+        this._x = this.randInt(0,9)%2?1:-1;
+        this._y = this.randInt(0,9)%2?1:-1;
         if (this.x == this.y) {
             this.randomizePosition();
         } else {
@@ -17,12 +17,12 @@ class Ball {
     }
 
     randomizeColor() {
-		this.r = this.randInt(1,254);
-		this.g = this.randInt(1,254);
-		this.b = this.randInt(1,254);
-		this._r = this.randInt(0,50)%2?10:-10;
-		this._g = this.randInt(0,50)%2?10:-10;
-		this._b = this.randInt(0,50)%2?10:-10;
+		this.r = this.randInt(0,255);
+		this.g = this.randInt(0,255);
+		this.b = this.randInt(0,255);
+		this._r = this.randInt(0,9)%2?10:-10;
+		this._g = this.randInt(0,9)%2?10:-10;
+		this._b = this.randInt(0,9)%2?10:-10;
     }
 
     calculate() {
@@ -79,8 +79,8 @@ class Ball {
         this.b += this._b;
     }
 
-    randInt(_in, _out) {
-        return Math.floor(Math.random() * _out) + _in;
+    randInt(low, high) {
+        return Math.floor(Math.random() * (high - low + 1) + low);
     }
 
 };

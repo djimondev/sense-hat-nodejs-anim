@@ -1,4 +1,5 @@
 'use strict';
+const SnakePoint = require('./SnakePoint.js');
 class Snake {
     constructor() {
         this.points = [];
@@ -7,27 +8,28 @@ class Snake {
     }
 
     randomizePosition() {
-        this.x = this.randInt(1,5);
-        this.y = this.randInt(1,5);
-        this._x = this.randInt(-1,2);
-        this._y = this.randInt(-1,2);
+        this.x = this.randInt(1,7);
+        this.y = this.randInt(1,7);
+        this._x = this.randInt(-1,1);
+        this._y = this.randInt(-1,1);
 
         if (this.x == this.y || (this._x == 0 && this._y == 0)|| (this._x != 0 && this._y != 0)) {
             this.randomizePosition();
         } else {
-            this.randomizeValues();
+            this.randomizeColor();
+            let p = new Point([this.x, this.y, this.r, this.g, this.b])
             this.points.push([this.x, this.y]);
         }
 
     }
 
-    randomizeValues() {
-        this.r = this.randInt(1,254);
-        this.g = this.randInt(1,254);
-        this.b = this.randInt(1,254);
-        this._r = this.randInt(0,50)%2?10:-10;
-        this._g = this.randInt(0,50)%2?10:-10;
-        this._b = this.randInt(0,50)%2?10:-10;
+    randomizeColor() {
+        this.r = this.randInt(0,255);
+        this.g = this.randInt(0,255);
+        this.b = this.randInt(0,255);
+        this._r = this.randInt(0,9)%2?10:-10;
+        this._g = this.randInt(0,9)%2?10:-10;
+        this._b = this.randInt(0,9)%2?10:-10;
     }
 
     calculate() {
@@ -80,10 +82,10 @@ class Snake {
         if (this.randInt(0,4) == 3) {
             if (this._x !=0) {
                 this._x = 0;
-                this._y= this.randInt(0,50)%2?1:-1;
+                this._y= this.randInt(0,9)%2?1:-1;
             } else {
                 this._y = 0;
-                this._x= this.randInt(0,50)%2?1:-1;
+                this._x= this.randInt(0,9)%2?1:-1;
             }
         }
 
@@ -93,8 +95,8 @@ class Snake {
         }
     }
 
-    randInt(_in, _out) {
-        return Math.floor(Math.random() * _out) + _in;
+    randInt(low, high) {
+        return Math.floor(Math.random() * (high - low + 1) + low);
     }
 
 };
