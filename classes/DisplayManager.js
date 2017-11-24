@@ -5,12 +5,19 @@ const SnakeAnimation = require('./animation/snake/SnakeAnimation.js');
 const SquareAnimation = require('./animation/squares/SquareAnimation.js');
 const SnowAnimation = require('./animation/snow/SnowAnimation.js');
 const PixelAnimation = require('./animation/pixelfall/PixelAnimation.js');
+const WeatherAnimation = require('./animation/weather/WeatherAnimation.js');
 
 class DisplayManager {
 	constructor(lowlight = false) {
         this.sense = require("sense-hat-led").sync;
 		this.sense.clear();
 		this.sense.lowLight = lowlight;
+    }
+
+    startWeatherAnimation() {
+        this.sense = require("sense-hat-led");
+        let anim = new WeatherAnimation(this.sense);
+        anim.start()
     }
 
     startSnowAnimation() {
