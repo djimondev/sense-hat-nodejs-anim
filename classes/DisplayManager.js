@@ -15,7 +15,6 @@ class DisplayManager {
     }
 
     startWeatherAnimation() {
-        this.sense = require("sense-hat-led");
         let anim = new WeatherAnimation(this.sense);
         anim.start()
     }
