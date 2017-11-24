@@ -26,8 +26,8 @@ class DisplayManager {
         anim.start()
     }
 
-    randInt(_in, _out) {
-        return Math.floor(Math.random() * _out) + _in;
+    randInt(high, low) {
+        return Math.random() * (high - low) + low;
     }
 };
 
