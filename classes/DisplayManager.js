@@ -5,7 +5,7 @@ const SnakeAnimation = require('./animation/snake/SnakeAnimation.js');
 const SquareAnimation = require('./animation/squares/SquareAnimation.js');
 
 class DisplayManager {
-	constructor(lowlight = true) {
+	constructor(lowlight = false) {
         this.sense = require("sense-hat-led").sync;
 		this.sense.clear();
 		this.sense.lowLight = lowlight;
@@ -22,7 +22,7 @@ class DisplayManager {
     }
 
     startSquareAnimation() {
-        let anim = new BallAnimation(this.sense);
+        let anim = new SquareAnimation(this.sense, 0.1);
         anim.start()
     }
 

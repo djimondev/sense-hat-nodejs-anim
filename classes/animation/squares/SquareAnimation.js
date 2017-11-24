@@ -2,8 +2,9 @@
 const Square = require('./Square.js');
 
 class SquareAnimation {
-	constructor(sense, nb=1) {
+	constructor(sense, sleep = 0.4) {
         this.sense = sense;
+        this.sleep = sleep;
     }
 
     start() {
@@ -21,8 +22,13 @@ class SquareAnimation {
         var anim = this;
         this.Squares.forEach(function(square) {
             square.calculateColor();
+
+            anim.sense.setPixel(square.x+0, square.y+0,[square.r,square.g,square.b]);
+            anim.sense.setPixel(square.x+1, square.y+0,[square.r,square.g,square.b]);
+            anim.sense.setPixel(square.x+0, square.y+1,[square.r,square.g,square.b]);
+            anim.sense.setPixel(square.x+1, square.y+1,[square.r,square.g,square.b]);
         });
-        anim.sense.sleep(.2);
+        anim.sense.sleep(this.sleep);
         anim.animate();
     }
 };
