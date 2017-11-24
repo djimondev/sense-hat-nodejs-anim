@@ -7,12 +7,12 @@ class Square {
     }
 
     randomizeColor() {
-		this.r = this.randInt(1,254);
-		this.g = this.randInt(1,254);
-		this.b = this.randInt(1,254);
-		this._r = this.randInt(0,50)%2?10:-10;
-		this._g = this.randInt(0,50)%2?10:-10;
-		this._b = this.randInt(0,50)%2?10:-10;
+		this.r = this.randInt(0,255);
+		this.g = this.randInt(0,255);
+		this.b = this.randInt(0,255);
+		this._r = this.randInt(0,9)%2?10:-10;
+		this._g = this.randInt(0,9)%2?10:-10;
+		this._b = this.randInt(0,9)%2?10:-10;
     }
 
     calculateColor() {
@@ -46,8 +46,8 @@ class Square {
         this.b += this._b;
     }
 
-    randInt(_in, _out) {
-        return Math.floor(Math.random() * _out) + _in;
+    randInt(low, high) {
+        return Math.floor(Math.random() * (high - low + 1) + low);
     }
 
 };
