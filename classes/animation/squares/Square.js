@@ -1,19 +1,9 @@
 'use strict';
-class Ball {
-	constructor() {
-        this.randomizePosition();
-    }
-
-    randomizePosition() {
-        this.x = this.randInt(0,8);
-        this.y = this.randInt(0,8);
-        this._x = this.randInt(0,50)?1:-1;
-        this._y = this.randInt(0,50)?1:-1;
-        if (this.x == this.y) {
-            this.randomizePosition();
-        } else {
-            this.randomizeColor();
-        }
+class Square {
+	constructor(x,y) {
+        this.x = x;
+        this.y = y;
+        this.randomizeColor();
     }
 
     randomizeColor() {
@@ -23,29 +13,6 @@ class Ball {
 		this._r = this.randInt(0,50)%2?10:-10;
 		this._g = this.randInt(0,50)%2?10:-10;
 		this._b = this.randInt(0,50)%2?10:-10;
-    }
-
-    calculate() {
-        this.calculatePosition();
-        this.calculateColor();
-    }
-
-    calculatePosition() {
-        if(this.x>6) {
-            this._x = -1
-        }
-        if(this.x<1) {
-            this._x = 1
-        }
-        if(this.y>6) {
-            this._y = -1
-        }
-        if(this.y<1) {
-            this._y = 1
-        }
-
-        this.x += this._x;
-        this.y += this._y;
     }
 
     calculateColor() {
@@ -85,4 +52,4 @@ class Ball {
 
 };
 
-module.exports = Ball;
+module.exports = Square;
