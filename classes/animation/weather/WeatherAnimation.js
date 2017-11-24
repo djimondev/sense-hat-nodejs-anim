@@ -34,8 +34,9 @@ class WeatherAnimation {
             txt+="soleil "+sunrise+" a "+sunset;
 
             console.log(txt);
-            anim.sense.showMessage(txt, .08, [255, 255, 255],[0, 0, 0], anim._request);
-
+            anim.sense.showMessage(txt, .08, [255, 255, 255],[0, 0, 0]);
+            anim.sense.sleep(2);
+            anim._request();
         });
     }
 
