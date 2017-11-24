@@ -4,6 +4,7 @@ const BallAnimation = require('./animation/balls/BallAnimation.js');
 const SnakeAnimation = require('./animation/snake/SnakeAnimation.js');
 const SquareAnimation = require('./animation/squares/SquareAnimation.js');
 const SnowAnimation = require('./animation/snow/SnowAnimation.js');
+const PixelAnimation = require('./animation/pixelfall/PixelAnimation.js');
 
 class DisplayManager {
 	constructor(lowlight = false) {
@@ -32,8 +33,13 @@ class DisplayManager {
         anim.start()
     }
 
-    randInt(high, low) {
-        return Math.random() * (high - low) + low;
+    startPixelAnimation() {
+        let anim = new PixelAnimation(this.sense, 0);
+        anim.start()
+    }
+
+    randInt(low, high) {
+        return Math.floor(Math.random() * (high - low + 1) + low);
     }
 };
 
