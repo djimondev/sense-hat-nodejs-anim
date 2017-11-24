@@ -2,5 +2,5 @@
 
 Be sure that python,sense-hat binaries and nodejs are installed !
 
-## to start animation
+## To start animation
 **npm install && npm start**
