@@ -10,6 +10,8 @@
   "author": "Jimmy LEFEVRE <lefevre.djim@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "querystring": "^0.2.0",
+    "request": "^2.83.0",
     "sense-hat-led": "^1.0.1"
   }
 }
