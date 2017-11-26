@@ -24,7 +24,7 @@ class BallAnimation {
             ball.calculate();
             anim.drawBall(ball);
         });
-        anim.sense.sleep(.2);
+        anim.sense.sleep(0.2);
         anim.animate();
     }
 
@@ -36,6 +36,6 @@ class BallAnimation {
         this.sense.setPixel(ball.x,ball.y,[ball.r,ball.g,ball.b]);
     }
 
-};
+}
 
 module.exports = BallAnimation;

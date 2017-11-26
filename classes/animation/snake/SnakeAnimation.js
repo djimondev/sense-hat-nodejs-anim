@@ -23,7 +23,7 @@ class SnakeAnimation {
             anim.drawSnake(snake);
             anim.eraseSnake(snake);
         });
-        anim.sense.sleep(.2);
+        anim.sense.sleep(0.2);
         anim.animate();
     }
 
@@ -39,8 +39,6 @@ class SnakeAnimation {
             sense.setPixel(point[0],point[1],[snake.r,snake.g,snake.b]);
         });
     }
-
-
-};
+}
 
 module.exports = SnakeAnimation;

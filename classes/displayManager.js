@@ -13,22 +13,22 @@ class DisplayManager {
 
     startSnakeAnimation() {
         let anim = new SnakeAnimation(this.sense,this.randInt(1,4));
-        anim.start()
+        anim.start();
     }
 
     startBallAnimation() {
         let anim = new BallAnimation(this.sense,this.randInt(1,8));
-        anim.start()
+        anim.start();
     }
 
     startSquareAnimation() {
-        let anim = new BallAnimation(this.sense);
-        anim.start()
+        let anim = new SquareAnimation(this.sense);
+        anim.start();
     }
 
     randInt(_in, _out) {
         return Math.floor(Math.random() * _out) + _in;
     }
-};
+}
 
 module.exports = DisplayManager;

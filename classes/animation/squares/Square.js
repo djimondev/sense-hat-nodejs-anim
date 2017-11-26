@@ -1,7 +1,6 @@
 'use strict';
 class Square {
 	constructor(x,y) {
-        this.randomizePosition();
         this.x = x;
         this.y = y;
         this.randomizeColor();

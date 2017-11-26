@@ -32,16 +32,16 @@ class Ball {
 
     calculatePosition() {
         if(this.x>6) {
-            this._x = -1
+            this._x = -1;
         }
         if(this.x<1) {
-            this._x = 1
+            this._x = 1;
         }
         if(this.y>6) {
-            this._y = -1
+            this._y = -1;
         }
         if(this.y<1) {
-            this._y = 1
+            this._y = 1;
         }
 
         this.x += this._x;
@@ -82,7 +82,6 @@ class Ball {
     randInt(_in, _out) {
         return Math.floor(Math.random() * _out) + _in;
     }
-
-};
+}
 
 module.exports = Ball;

@@ -2,7 +2,7 @@
 const Square = require('./Square.js');
 
 class SquareAnimation {
-	constructor(sense, nb=1) {
+	constructor(sense) {
         this.sense = sense;
     }
 
@@ -22,9 +22,9 @@ class SquareAnimation {
         this.Squares.forEach(function(square) {
             square.calculateColor();
         });
-        anim.sense.sleep(.2);
+        anim.sense.sleep(0.2);
         anim.animate();
     }
-};
+}
 
 module.exports = SquareAnimation;
